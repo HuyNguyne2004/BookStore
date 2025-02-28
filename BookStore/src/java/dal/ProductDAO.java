@@ -4,8 +4,10 @@
  */
 package dal;
 
+import com.oracle.wls.shaded.org.apache.bcel.classfile.Code;
 import enity.Product;
 import java.util.LinkedHashMap;
+import constant.CommonConst;
 /**
  *
  * @author Admin
@@ -42,27 +44,51 @@ public class ProductDAO extends GenericDAO<Product> {
         return queryGenericDAO(Product.class);
     }
 
-    @Override
-    public int insert(Product t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public List<Product> findByCategory(String categoryID) {
-        String sql = "SELECT *\n"
-                + "  FROM [Product]\n"
-                + "  where categoryId = ?";
+    public List<Product> findByCategory(String categoryID, int page) {
+        String sql = "SELECT * \n"
+                + "FROM [Product]\n"
+                + "where categoryId = ?\n"
+                + "ORDER BY id\n"
+                + "OFFSET ? ROW\n" // (PAGE - 1) * Y
+                + "FETCH NEXT ? ROW ONLY"; // NUMBER_RECORD_PER_PAGE
         parameterMap = new LinkedHashMap<>();
         parameterMap.put("categoryId", categoryID);
+        parameterMap.put("offset", (page - 1) * CommonConst.RECORD_PER_PAGE);
+        parameterMap.put("fetch", CommonConst.RECORD_PER_PAGE);
         return queryGenericDAO(Product.class, sql, parameterMap);
     }
 
-    public List<Product> findByKeyWord(String keyword) {
+    public List<Product> findByKeyWord(String keyword, int page) {
         String sql = "SELECT *\n"
                 + "FROM [Product]\n"
                 + "WHERE name LIKE ?";
         parameterMap = new LinkedHashMap<>();
         parameterMap.put("name", "%" + keyword + "%");
-        return queryGenericDAO(Product.class,sql,parameterMap);
+        return queryGenericDAO(Product.class, sql, parameterMap);
     }
+
+    public int findTotalRecordByCategory(String categoryID) {
+        String sql = "SELECT count (*)\n"
+                + "FROM [Product]\n"
+                + "where categoryId = ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("categoryId", categoryID);
+        return findTotalRecordGenericDAO(Product.class, sql, parameterMap);
+    }
+
+    public int findTotalRecordByKeyword(String keyword) {
+        String sql = "SELECT count (*)\n"
+                + "FROM [Product]\n"
+                + "where name like ?";
+        parameterMap = new LinkedHashMap<>();
+        parameterMap.put("name", keyword);
+        return findTotalRecordGenericDAO(Product.class, sql, parameterMap);
+    }
+
+    public void insert(Product product) {
+        insertGenericDAO(product);
+    }
+
+   
 
 }

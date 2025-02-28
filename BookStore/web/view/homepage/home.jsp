@@ -47,30 +47,30 @@
         <!-- header-area-start -->
         <header>
             <!-- header-top-area-start -->
-            <jsp:include page="../common/header-top-area.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/header-top-area.jsp"></jsp:include>
             <!-- header-top-area-end -->
             <!-- header-mid-area-start -->
-            <jsp:include page="../common/header-mid-area.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/header-mid-area.jsp"></jsp:include>
             <!-- header-mid-area-end -->
             <!-- main-menu-area-start -->
-            <jsp:include page="../common/main-menu-area.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/main-menu-area.jsp"></jsp:include>
             <!-- main-menu-area-end -->
             <!-- mobile-menu-area-start -->
-            <jsp:include page="../common/mobile-menu-area.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/mobile-menu-area.jsp"></jsp:include>
             <!-- mobile-menu-area-end -->
         </header>
         <!-- header-area-end -->
         <!-- breadcrumbs-area-start -->
-            <jsp:include page="../common/breadcrumbs-area-start.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/breadcrumbs-area-start.jsp"></jsp:include>
         <!-- breadcrumbs-area-end -->
         <!-- shop-main-area-start -->
-            <jsp:include page="../common/shop-main-area-start.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/shop-main-area-start.jsp"></jsp:include>
         <!-- shop-main-area-end -->
         <!-- footer-area-start -->
-            <jsp:include page="../common/footer-area.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/footer-area.jsp"></jsp:include>
         <!-- footer-area-end -->
         <!-- Modal -->
-            <jsp:include page="../common/Modal.jsp"></jsp:include>
+            <jsp:include page="../common/homePage/Modal.jsp"></jsp:include>
         <!-- Modal end -->
 
 

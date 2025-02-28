@@ -26,7 +26,7 @@ import lombok.ToString;
 public class Product {
     private int id ;
     private String name;
-    private String img;
+    private String image;
     private int quantity;
     private double price;
     private String description;

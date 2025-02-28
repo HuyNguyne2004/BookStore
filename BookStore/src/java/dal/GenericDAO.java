@@ -274,5 +274,5 @@ public abstract class GenericDAO<T> extends DBContext {
     public abstract List<T> findAll();
 
     // Abstract method to be implemented by subclasses to insert a record
-    public abstract int insert(T t);
+//    public abstract int insert(T t);
 }
